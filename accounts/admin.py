@@ -4,7 +4,7 @@ from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm
 )
-from .models import CustomUser
+from .models import CustomUser, Role, Team
 
 
 class CustomUserAdmin(UserAdmin):
@@ -23,3 +23,5 @@ class CustomUserAdmin(UserAdmin):
     )
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Role)
+admin.site.register(Team)

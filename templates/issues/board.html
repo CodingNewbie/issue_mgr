@@ -1,0 +1,56 @@
+<!-- templates/issues/board.html -->
+{% extends "base.html" %}
+
+{% block title %}Project Board{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>To Do</h3>
+            <ul class="list-group">
+                {% for issue in to_do_list %}
+                <li class="list-group-item">
+                    <h5>{{ issue.name }}</h5>
+                    <p>{{ issue.summary }}</p>
+                    <p><strong>Assignee:</strong> {{ issue.assignee.username }}</p>
+                    <a href="{% url 'edit_issue' issue.pk %}" class="btn btn-primary">Edit</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item">No issues</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h3>In Progress</h3>
+            <ul class="list-group">
+                {% for issue in in_progress_list %}
+                <li class="list-group-item">
+                    <h5>{{ issue.name }}</h5>
+                    <p>{{ issue.summary }}</p>
+                    <p><strong>Assignee:</strong> {{ issue.assignee.username }}</p>
+                    <a href="{% url 'edit_issue' issue.pk %}" class="btn btn-primary">Edit</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item">No issues</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h3>Done</h3>
+            <ul class="list-group">
+                {% for issue in done_list %}
+                <li class="list-group-item">
+                    <h5>{{ issue.name }}</h5>
+                    <p>{{ issue.summary }}</p>
+                    <p><strong>Assignee:</strong> {{ issue.assignee.username }}</p>
+                    <a href="{% url 'edit_issue' issue.pk %}" class="btn btn-primary">Edit</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item">No issues</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
